@@ -1,0 +1,328 @@
+/* ============================================
+   TENNISCOACH — Roland Garros / Terre Battue
+   Palette : ocre, argile, vert foncé, blanc cassé
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,700;1,400&family=DM+Sans:wght@300;400;500&display=swap');
+
+/* ── Variables ── */
+:root {
+  --clay:        #c1440e;   /* rouge terre battue */
+  --clay-dark:   #8c2e07;   /* argile foncé */
+  --clay-light:  #d4663a;   /* ocre chaud */
+  --clay-dust:   #e8a87c;   /* poussière claire */
+  --chalk:       #f7f0e6;   /* blanc craie */
+  --net-green:   #2e5c3e;   /* vert filet Roland Garros */
+  --net-green-l: #3d7a54;
+  --dark:        #1a1208;
+  --text:        #3b2510;
+  --text-soft:   #7a5540;
+  --shadow:      rgba(140, 46, 7, 0.18);
+}
+
+/* ── Reset ── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { font-size: 16px; scroll-behavior: smooth; }
+
+/* ── Body ── */
+body {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 400;
+  background-color: var(--chalk);
+  color: var(--text);
+  line-height: 1.7;
+
+  /* texture grain terre battue */
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='400' height='400'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0.3'/%3E%3C/filter%3E%3Crect width='400' height='400' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+}
+
+/* ── Container ── */
+.container {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ═══════════════════════════════
+   BANNER
+═══════════════════════════════ */
+.banner {
+  background-color: var(--clay);
+  background-image:
+    /* lignes de court superposées */
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 48px,
+      rgba(255,255,255,0.04) 48px,
+      rgba(255,255,255,0.04) 50px
+    ),
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 48px,
+      rgba(255,255,255,0.04) 48px,
+      rgba(255,255,255,0.04) 50px
+    ),
+    /* dégradé profondeur */
+    linear-gradient(160deg, var(--clay-dark) 0%, var(--clay) 45%, var(--clay-light) 100%);
+
+  padding: 6rem 0 5rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* filet bas du banner */
+.banner::after {
+  content: '';
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--net-green) 0px,
+    var(--net-green) 18px,
+    transparent 18px,
+    transparent 22px
+  );
+  opacity: 0.7;
+}
+
+.banner .container {
+  text-align: center;
+  position: relative;
+  z-index: 1;
+}
+
+.banner h1 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: clamp(3rem, 8vw, 6rem);
+  font-weight: 700;
+  color: #fff;
+  letter-spacing: 0.04em;
+  line-height: 1.1;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.3);
+  animation: fadeDown 0.7s ease both;
+}
+
+.banner h2 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 300;
+  font-size: clamp(1rem, 2.5vw, 1.3rem);
+  color: rgba(255,255,255,0.82);
+  letter-spacing: 0.12em;
+  margin-top: 0.8rem;
+  text-transform: uppercase;
+  font-style: normal;
+  border: none;
+  animation: fadeDown 0.7s 0.15s ease both;
+}
+
+/* ── CTA Button ── */
+.btn-yellow {
+  display: inline-block;
+  margin-top: 2.2rem;
+  padding: 0.85rem 2.4rem;
+  background: #fff;
+  color: var(--clay-dark);
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 0.95rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-decoration: none;
+  border: 2px solid transparent;
+  border-radius: 2px;
+  transition: background 0.3s, color 0.3s, border-color 0.3s, transform 0.2s;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.2);
+  animation: fadeDown 0.7s 0.3s ease both;
+}
+
+.btn-yellow:hover {
+  background: transparent;
+  color: #fff;
+  border-color: rgba(255,255,255,0.8);
+  transform: translateY(-2px);
+}
+
+/* ═══════════════════════════════
+   CONTENU PRINCIPAL
+═══════════════════════════════ */
+
+/* ── Profil coach ── */
+.container > h2:first-of-type {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.8rem, 4vw, 2.8rem);
+  font-weight: 700;
+  color: var(--clay-dark);
+  text-align: center;
+  margin-top: 4.5rem;
+  letter-spacing: 0.02em;
+  animation: fadeUp 0.7s 0.2s ease both;
+}
+
+.subtitle {
+  text-align: center;
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--net-green);
+  margin-top: 0.4rem;
+  margin-bottom: 2rem;
+  font-weight: 500;
+  animation: fadeUp 0.7s 0.3s ease both;
+}
+
+/* ── Avatar ── */
+.avatar {
+  display: block;
+  width: clamp(110px, 18vw, 160px);
+  height: clamp(110px, 18vw, 160px);
+  object-fit: cover;
+  border-radius: 50%;
+  margin: 0 auto 4rem;
+  border: 4px solid var(--clay);
+  box-shadow:
+    0 0 0 6px var(--chalk),
+    0 0 0 8px var(--clay-dust),
+    0 12px 40px var(--shadow);
+  filter: sepia(10%) contrast(1.08) saturate(1.05);
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  animation: fadeUp 0.7s 0.4s ease both;
+}
+
+.avatar:hover {
+  transform: scale(1.04);
+  box-shadow:
+    0 0 0 6px var(--chalk),
+    0 0 0 9px var(--clay),
+    0 16px 50px rgba(140, 46, 7, 0.28);
+}
+
+/* ── Titre "Nos services" ── */
+.container > h2:last-of-type {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(1.5rem, 3vw, 2.2rem);
+  font-weight: 700;
+  color: var(--dark);
+  text-align: center;
+  margin-bottom: 2.2rem;
+  position: relative;
+}
+
+.container > h2:last-of-type::after {
+  content: '';
+  display: block;
+  width: 3.5rem;
+  height: 3px;
+  background: var(--clay);
+  margin: 0.8rem auto 0;
+  border-radius: 2px;
+}
+
+/* ═══════════════════════════════
+   CARDS
+═══════════════════════════════ */
+.cards {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: 1.6rem;
+  padding-bottom: 5rem;
+}
+
+.card {
+  background: #fff;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid rgba(193, 68, 14, 0.12);
+  box-shadow: 0 4px 20px var(--shadow);
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 14px 40px rgba(140, 46, 7, 0.22);
+}
+
+/* barre couleur clay en haut de chaque carte au hover */
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--clay-dark), var(--clay-light));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.35s ease;
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+.card img {
+  display: block;
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+  filter: sepia(20%) saturate(0.9);
+  transition: filter 0.4s ease;
+}
+
+.card:hover img {
+  filter: sepia(5%) saturate(1.1);
+}
+
+.card h3 {
+  font-family: 'DM Sans', sans-serif;
+  font-weight: 500;
+  font-size: 1rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text);
+  padding: 1.1rem 1.3rem;
+  text-align: center;
+  position: relative;
+}
+
+.card h3::after {
+  content: '●';
+  display: block;
+  font-size: 0.4rem;
+  color: var(--clay);
+  margin-top: 0.5rem;
+  opacity: 0.6;
+}
+
+/* ═══════════════════════════════
+   ANIMATIONS
+═══════════════════════════════ */
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* stagger cards */
+.card:nth-child(1) { animation: fadeUp 0.6s 0.1s ease both; }
+.card:nth-child(2) { animation: fadeUp 0.6s 0.2s ease both; }
+.card:nth-child(3) { animation: fadeUp 0.6s 0.3s ease both; }
+.card:nth-child(4) { animation: fadeUp 0.6s 0.4s ease both; }
+
+/* ═══════════════════════════════
+   RESPONSIVE
+═══════════════════════════════ */
+@media (max-width: 600px) {
+  .banner { padding: 4rem 0 3.5rem; }
+  .cards { grid-template-columns: 1fr 1fr; gap: 1rem; }
+  .card img { height: 130px; }
+}
+
+@media (max-width: 400px) {
+  .cards { grid-template-columns: 1fr; }
+}
